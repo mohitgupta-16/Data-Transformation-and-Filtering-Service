@@ -1,0 +1,11 @@
+[
+  for (.)
+  {
+  "id": .id,
+  "name": .name,
+  "email": .email,
+  "age": .age,
+  "isAdult": ( if (.age >= 18) true else false),
+  "isSubscribed": ( if (.subscriptionStatus == "active") true else false)
+  }
+]
