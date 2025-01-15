@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import com.example.demo.models.Customer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.schibsted.spt.data.jslt.Parser;
@@ -27,14 +26,11 @@ public class CustomerService {
 
     public void getTransformedCustomers() {
         try {
-            Customer[] customersArray = objectMapper.readValue(
-                    new File("src/test/resources/input.json"), Customer[].class
+            JsonNode customers = objectMapper.readTree(
+                    new File("src/test/resources/input.json")
             );
-            List<Customer> customers = List.of(customersArray);
 
-            JsonNode customersNode = objectMapper.valueToTree(customers);
-
-            JsonNode transformedNode = jsltExpression.apply(customersNode);
+            JsonNode transformedNode = jsltExpression.apply(customers);
 
             if (transformedNode.isArray()) {
                 List<JsonNode> transformedCustomers = new ArrayList<>();

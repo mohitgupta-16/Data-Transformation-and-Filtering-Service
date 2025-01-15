@@ -1,11 +1,23 @@
-[
-  for (.)
-  {
-  "id": .id,
-  "name": .name,
-  "email": .email,
-  "age": .age,
-  "isAdult": ( if (.age >= 18) true else false),
-  "isSubscribed": ( if (.subscriptionStatus == "active") true else false)
-  }
+def transform(email)
+    if (ends-with($email, "@gmail.com"))
+        replace($email, "@gmail.com", "@mohit.com")
+    else $email
+
+def greetMe(name)
+    if (starts-with($name, "Shri"))
+        "Hello Sir"
+    else "Hello"
+
+let result = [
+    for (.)
+        {
+            "id" : .id,
+            "name" : .name,
+            "email" : transform(.email),
+            "age" : .age,
+            "greetMe" : greetMe(.name),
+            "isAdult" : (if (.age >= 18) true else false),
+            "isSubscribed" : (if (.subscriptionStatus == "active") true else false)
+        }
 ]
+$result

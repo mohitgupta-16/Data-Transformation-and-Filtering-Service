@@ -1,0 +1,9 @@
+[ {
+  "id" : 1,
+  "name" : "Shri Alice",
+  "email" : "alice@mohit.com",
+  "age" : 30,
+  "greetMe" : "Hello Sir",
+  "isAdult" : true,
+  "isSubscribed" : true
+} ]
