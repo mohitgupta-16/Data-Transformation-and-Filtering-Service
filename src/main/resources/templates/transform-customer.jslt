@@ -3,10 +3,11 @@ def transform(email)
         replace($email, "@gmail.com", "@mohit.com")
     else $email
 
-def greetMe(name)
-    if (starts-with($name, "Shri"))
-        "Hello Sir"
-    else "Hello"
+def greetMe(salutation)
+        //first parameter = collection name
+        //second parameter= fieldnanmes
+        //thid parameter = db output
+    Lookup("greetlookcollection", {"title":$salutation },"outputSalutation")
 
 let result = [
     for (.)
@@ -15,7 +16,7 @@ let result = [
             "name" : .name,
             "email" : transform(.email),
             "age" : .age,
-            "greetMe" : greetMe(.name),
+            "greetMe" : greetMe(.salutation),
             "isAdult" : (if (.age >= 18) true else false),
             "isSubscribed" : (if (.subscriptionStatus == "active") true else false)
         }

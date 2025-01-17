@@ -1,9 +1,17 @@
 [ {
   "id" : 1,
-  "name" : "Shri Alice",
+  "name" : "Shri.",
   "email" : "alice@mohit.com",
   "age" : 30,
-  "greetMe" : "Hello Sir",
+  "greetMe" : "Hello sir",
+  "isAdult" : true,
+  "isSubscribed" : true
+}, {
+  "id" : 2,
+  "name" : "Ema",
+  "email" : "ema@example.com",
+  "age" : 32,
+  "greetMe" : "Hello Madam",
   "isAdult" : true,
   "isSubscribed" : true
 } ]

@@ -1,1 +1,26 @@
-[{"id":1,"name":"Shri Alice","email":"alice@gmail.com","age":30,"subscriptionStatus":"active","adult":false,"subscribed":false},{"id":2,"name":"Bob","email":"bob@example.com","age":25,"subscriptionStatus":"inactive","adult":false,"subscribed":false}]
+[
+  {
+    "id": 1,
+    "salutation": "Shri",
+    "name": "Shri.",
+    "email": "alice@gmail.com",
+    "age": 30,
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 2,
+    "salutation": "Smt",
+    "name": "Ema",
+    "email": "ema@example.com",
+    "age": 32,
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 2,
+    "salutation": "Sh",
+    "name": "Bob",
+    "email": "bob@example.com",
+    "age": 25,
+    "subscriptionStatus": "inactive"
+  }
+]
