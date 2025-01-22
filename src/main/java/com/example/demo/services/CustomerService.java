@@ -2,11 +2,11 @@ package com.example.demo.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.schibsted.spt.data.jslt.Function;
 import com.schibsted.spt.data.jslt.Parser;
 import com.schibsted.spt.data.jslt.Expression;
@@ -19,6 +19,9 @@ import static com.mongodb.client.model.Filters.eq;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -36,7 +39,8 @@ public class CustomerService {
 
     @PostConstruct
     public void init() throws IOException {
-        Collection<Function> functions = Collections.singleton(new LookUpFunction(mongoUri, dbName));
+        System.out.println(mongoUri + "========="+ dbName);
+        Collection<Function> functions = List.of(new LookUpFunction(mongoUri, dbName), new YearsTillNow());
         jsltExpression = Parser.compile(new File("src/main/resources/templates/transform-customer.jslt"), functions);
     }
 
@@ -121,5 +125,39 @@ public class CustomerService {
         }
     }
 
+    public static class YearsTillNow implements Function {
+
+        @Override
+        public String getName() {
+            return "YearsTillNow";
+        }
+
+        @Override
+        public int getMinArguments() {
+            return 2;
+        }
+
+        @Override
+        public int getMaxArguments() {
+            return 2;
+        }
+
+        @Override
+        public JsonNode call(JsonNode input, JsonNode[] params) {
+            String dateOfBirth = params[0].asText();
+            String datePattern = params[1].asText();
+
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(datePattern);
+                LocalDate birthDate = LocalDate.parse(dateOfBirth, formatter);
+
+                long age = ChronoUnit.YEARS.between(birthDate, LocalDate.now());
+
+                return new IntNode((int) age);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Invalid date or date format", e);
+            }
+        }
+    }
 
 }

@@ -2,9 +2,10 @@
   {
     "id": 1,
     "salutation": "Shri",
-    "name": "Shri.",
-    "email": "alice@gmail.com",
-    "age": 30,
+    "name": "Alice",
+    "email": "alice@example.com",
+    "dateOfBirth": "28/09/2018",
+    "schoolEnrollmentDate": "12-09-2022",
     "subscriptionStatus": "active"
   },
   {
@@ -12,7 +13,8 @@
     "salutation": "Smt",
     "name": "Ema",
     "email": "ema@example.com",
-    "age": 32,
+    "dateOfBirth": "28/09/2019",
+    "schoolEnrollmentDate": "12-09-2023",
     "subscriptionStatus": "active"
   },
   {
@@ -20,7 +22,8 @@
     "salutation": "Sh",
     "name": "Bob",
     "email": "bob@example.com",
-    "age": 25,
+    "dateOfBirth": "28/09/2010",
+    "schoolEnrollmentDate": "12-09-2023",
     "subscriptionStatus": "inactive"
   }
 ]

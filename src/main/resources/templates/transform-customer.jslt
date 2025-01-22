@@ -4,10 +4,19 @@ def transform(email)
     else $email
 
 def greetMe(salutation)
-        //first parameter = collection name
-        //second parameter= fieldnanmes
-        //thid parameter = db output
-    Lookup("greetlookcollection", {"title":$salutation },"outputSalutation")
+//first parameter = collection name
+//second parameter= fieldnanmes
+//thid parameter = db output
+    Lookup("greetlookcollection", {"title" : $salutation}, "outputSalutation")
+
+def classStandard(inputYears)
+    if ($inputYears == 0)
+        "LKG"
+    else if ($inputYears == 1)
+        "UKG"
+    else if ($inputYears > 12)
+        "Grad"
+    else $inputYears - 1
 
 let result = [
     for (.)
@@ -15,7 +24,8 @@ let result = [
             "id" : .id,
             "name" : .name,
             "email" : transform(.email),
-            "age" : .age,
+            "age" : YearsTillNow(.dateOfBirth, "dd/MM/yyyy"),
+            "classStandard" : classStandard(YearsTillNow(.schoolEnrollmentDate, "dd-MM-yyyy")),
             "greetMe" : greetMe(.salutation),
             "isAdult" : (if (.age >= 18) true else false),
             "isSubscribed" : (if (.subscriptionStatus == "active") true else false)
