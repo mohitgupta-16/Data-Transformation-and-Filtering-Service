@@ -18,6 +18,9 @@ def classStandard(inputYears)
         "Grad"
     else $inputYears - 1
 
+def planLookUp(searchKey)
+    PlanLookup("planLookCollection", {"field" : $searchKey}, "output")
+
 let result = [
     for (.)
         {
@@ -28,7 +31,8 @@ let result = [
             "classStandard" : classStandard(YearsTillNow(.schoolEnrollmentDate, "dd-MM-yyyy")),
             "greetMe" : greetMe(.salutation),
             "isAdult" : (if (.age >= 18) true else false),
-            "isSubscribed" : (if (.subscriptionStatus == "active") true else false)
+            "isSubscribed" : (if (.subscriptionStatus == "active") true else false),
+            "planNum" : planLookUp(.Product_96 + .Moratorium_64)
         }
 ]
 $result

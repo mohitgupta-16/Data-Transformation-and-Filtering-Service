@@ -6,7 +6,9 @@
     "email": "alice@example.com",
     "dateOfBirth": "28/09/2018",
     "schoolEnrollmentDate": "12-09-2022",
-    "subscriptionStatus": "active"
+    "subscriptionStatus": "active",
+    "Moratorium_64": "4",
+    "Product_96" : "HDFC_LIFE_BASE_CI"
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "email": "ema@example.com",
     "dateOfBirth": "28/09/2019",
     "schoolEnrollmentDate": "12-09-2023",
-    "subscriptionStatus": "active"
+    "subscriptionStatus": "active",
+    "Moratorium_64": "4",
+    "Product_96" : "HDFC_LIFE_BASE_CI"
   },
   {
     "id": 2,
@@ -24,6 +28,8 @@
     "email": "bob@example.com",
     "dateOfBirth": "28/09/2010",
     "schoolEnrollmentDate": "12-09-2023",
-    "subscriptionStatus": "inactive"
+    "subscriptionStatus": "inactive",
+    "Moratorium_64": "4",
+    "Product_96" : "HDFC_LIFE_BASE_CI"
   }
 ]
